@@ -1,0 +1,355 @@
+{  
+  "$id": "http://yourdomain.com/schemas/myschema.json",
+  "title": "Task",
+  "type": "object",
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec"    
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "labels": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "app.kubernetes.io/version": {
+              "type": "string"
+            }
+          }
+        },
+        "annotations": {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "tekton.dev/pipelines.minVersion": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "spec": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "workspaces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "volumes": {
+
+        },
+        "sidecars": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "image": {
+
+              },
+              "command": {
+
+              },
+              "args": {
+
+              },
+              "workingDir": {
+
+              },
+              "ports": {
+                    
+              },
+              "envFrom": {
+
+              },
+              "env": {
+
+              },
+              "ResourceRequirements": {
+
+              },
+              "volumeMounts": {
+
+              },
+              "volumeDevices": {
+
+              },
+              "livenessProbe": {
+
+              },
+              "readinessProbe": {
+
+              },
+              "startupProbe": {
+
+              },
+              "lifecycle": {
+
+              },
+              "terminationMessagePath": {
+
+              },
+              "terminationMessagePolicy": {
+
+              },
+              "imagePullPolicy": {
+
+              },
+              "securityContext": {
+
+              },
+              "stdin": {
+
+              },
+              "stdinOnce": {
+
+              },
+              "tty": {
+
+              },
+              "script": {
+
+              },
+              "workspaces": {
+                
+              }
+            }
+          }
+        },
+        "results": {
+
+        },
+        "params": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "default": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
+              },
+              "type": {
+                "type": "string"
+              },
+              "properties": {
+
+              }
+            }
+          }
+        },
+        "stepTemplate": {
+          "type": "object",
+          "properties": {
+            "image": {
+              
+            },
+            "command": {
+
+            },
+            "args": {
+
+            },
+            "workingDir": {
+
+            },
+            "envFrom": {
+
+            },
+            "computeResources":{
+
+            },
+            "volumeMounts": {
+
+            },
+            "volumeDevices": {
+
+            },
+            "imagePullPolicy": {
+
+            },
+            "securityContext": {
+
+            },
+            "env": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "computerResources": {
+                "type": "object",
+                "properties": {
+                    "requests": {
+                        "type": "object",
+                        "properties": {
+                            "memory": {
+                                "type": "string"
+                            },
+                            "cpu": {
+                                "type": "string"
+                            }                        
+                        }
+                    },
+                    "limits": {
+                        "type": "object",
+                        "properties": {
+                            "memory": {
+                                "type": "string"
+                            },
+                            "cpu": {
+                                "type": "string"
+                            }                        
+                        }
+                    }
+                }
+              },
+              "image": {
+                "type": "string"
+              },
+              "script": {
+                "type": "string"
+              },
+              "workingDir": {
+                "type": "string"
+              },
+              "envFrom": {
+                "type": "array",
+                "items": {
+                    
+
+                }
+              },
+              "env": {
+                "type": "array",
+                "items": {
+                    
+
+                }
+              },
+              "volumeMounts": {
+
+
+              },
+              "volumeDevices": {
+
+              },
+              "imagePullPolicy": {
+
+              },
+              "securityContext": {
+
+              },
+              "workspaces": {
+
+              },
+              "command": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "args": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "timeout": {
+                "type": "string"
+              },
+              "onError": {
+                "type": "string",
+                "enum": ["stopAndFail", "continue"]
+              },
+              "stdoutConfig": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                }
+              },
+              "stderrConfig": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "steps"
+      ]
+    }
+  }
+}
